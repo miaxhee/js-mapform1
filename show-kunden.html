@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="Kunden.txt"></script>
+<script>
+
+//function KundenName(kunde) {
+  //  $("#demo").text(content);
+//}
+
+//var kunden = JSON.parse('[{	"name":	 "Firma1",	"kuerzel": "EWZ",	"geraete": []},{	"name": "Firma2",	"kuerzel": "KLL",	"geraete": []},{	"name": "Firma3",	"kuerzel": "ALK",	"geraete": []},{	"name": "Firma4",	"kuerzel": "FMM",	"geraete": []}]');  //read JSON
+var kunden = JSON.parse(Kunden);  //read JSON
+
+$( document ).ready(function() {
+    console.log( "document.ready!" );
+    $("#info").text("habe was gemacht");
+	console.log(kunden.length);
+	var str = "\n";
+	kunden.forEach(function (kunde){
+	    //var name = kunde.name;
+	 	console.log(str + kunde.name + ", " + kunde.kuerzel +"\n");
+		str = str + kunde.name + ", " + kunde.kuerzel +"<br />"
+	   });
+	 	document.getElementById("demo").innerHTML = str
+});
+
+</script>
+</head>
+
+<body>
+    
+<h2>Create Object from JSON String</h2>
+
+<p id="demo"></p>
+<br />
+<p id="info"></p>
+
+<script>
+
+//var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
+//document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;
+
+</script>
+</body>
+</html>

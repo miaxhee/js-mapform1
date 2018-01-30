@@ -1,0 +1,18 @@
+[
+{	"name":	 "Geraet1",
+	"ort": "Zuerich",
+	"serviceID": []
+},
+{	"name": "Geraet2",
+	"ort": "Linth",
+	"serviceID": []
+},
+{	"name": "Geraet3",
+	"ort": "Irgendwo",
+	"serviceID": []
+},
+{	"name": "Geraet4",
+	"ort": "Riede",
+	"serviceID": []
+}
+]
