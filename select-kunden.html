@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Selectable - Serialize Kunden</title>
+ 
+  <style>
+  #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="Kunden.txt"></script>
+  <script>
+var kunden = JSON.parse(Kunden);  //read JSON
+
+
+$( document ).ready(function() {
+    console.log( "document.ready!" );
+    $("#info").text("habe was gemacht");
+	console.log(kunden.length);
+	var str = "";
+	kunden.forEach(function (kunde){
+	 	//console.log(str + kunde.name + ", " + kunde.kuerzel +"\n");
+		str = str + "<li class='ui-widget-content'>" + kunde.name + ", " + kunde.kuerzel + "</li>" +"<br />"
+	   });
+	 	document.getElementById("selectable").innerHTML = str
+		
+
+});
+
+  $( function() {
+    $( "#selectable" ).selectable({
+      stop: function() {
+        var result = $( "#select-result" ).empty();
+		result = result.append("[");
+        $( ".ui-selected", this ).each(function() {
+          var index = $( "#selectable li" ).index( this );
+          result.append((index ) + ", " );
+        });
+		result = result.append("]");
+      }
+    });
+  } );
+
+
+</script>
+</head>
+<body>
+
+    
+<h2>Create Object from JSON String</h2>
+
+<p id="demo"></p>
+ 
+<p id="feedback">
+<span>You've selected:</span> <span id="select-result">none</span>.
+</p>
+ 
+<ol id="selectable">
+  <li class="ui-widget-content">Item 1</li>
+</ol>
+
+<br />
+<p id="info"></p>
+ 
+ 
+</body>
+</html>
